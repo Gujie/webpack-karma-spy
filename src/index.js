@@ -1,7 +1,8 @@
-export function bar() {
+function bar() {
   return 42;
 }
 
 export function foo() {
-  return bar();
+  const result = bar();
+  return result;
 }

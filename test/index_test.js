@@ -1,9 +1,11 @@
-import * as Index from '../src/index';
+// eslint-disable-next-line import/named
+import { foo, __RewireAPI__ as RewireAPI } from '../src/index';
 
 describe('test foo', () => {
   it('should call bar', () => {
-    spyOn(Index, 'bar');
-    Index.foo();
-    expect(Index.bar).toHaveBeenCalledWith();
+    const barSpy = jasmine.createSpy('bar');
+    RewireAPI.__Rewire__('bar', barSpy);
+    foo();
+    expect(barSpy).toHaveBeenCalledWith();
   });
 });

@@ -22,7 +22,22 @@ module.exports = function (config) {
     },
 
     webpack: {
+      mode: 'development',
       devtool: 'inline-source-map',
+      module: {
+        rules: [
+          {
+            test: /src\/.+\.js$/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                // presets: ['@babel/preset-env'],
+                plugins: ['rewire'],
+              },
+            },
+          },
+        ],
+      },
     },
 
     // test results reporter to use
@@ -45,7 +60,15 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['ChromeHeadless'],
+    browsers: ['Chrome'],
+    // browsers: ['MyHeadlessChrome'],
+
+    // customLaunchers: {
+    //   MyHeadlessChrome: {
+    //     base: 'ChromeHeadless',
+    //     flags: ['--remote-debugging-port=9223'],
+    //   },
+    // },
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
