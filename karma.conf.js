@@ -31,7 +31,7 @@ module.exports = function (config) {
             use: {
               loader: 'babel-loader',
               options: {
-                // presets: ['@babel/preset-env'],
+                presets: ['@babel/preset-env'],
                 plugins: ['rewire'],
               },
             },
@@ -60,15 +60,15 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
-    // browsers: ['MyHeadlessChrome'],
+    // browsers: ['Chrome'],
+    browsers: ['MyHeadlessChrome'],
 
-    // customLaunchers: {
-    //   MyHeadlessChrome: {
-    //     base: 'ChromeHeadless',
-    //     flags: ['--remote-debugging-port=9223'],
-    //   },
-    // },
+    customLaunchers: {
+      MyHeadlessChrome: {
+        base: 'ChromeHeadless',
+        flags: ['--remote-debugging-port=9333'],
+      },
+    },
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
